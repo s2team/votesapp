@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>VotesApp by s2team</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>VotesApp</h1>
+          <h2>VotesApp is a WhatsApp Bot that helps you and your friends to organize Votes in WhatsApp groups</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/s2team/contest/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/s2team/contest/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/s2team/contest" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p>As <em>WhatsApp</em> User the probability that you have a group together with some friends is quite huge. If not try it, it's a great feature. And when you are in a group like, it will happend that someone asks a question like, <em>Who likes to join Karting on Saturday?</em>, or <em>Whats about pizza today after work?</em>. Maybe you have such voting once a week for a fixed event like playing soccer in the evinig? Then it becomes quite hard to manage this.</p>
+
+<p>Now you just invite <strong>VotesApp</strong> into your <em>WhatsApp</em> group.
+Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</code>, <code>out</code>, <code>yes</code>, <code>no</code> to count votes and <code>status</code>, <code>status [in|out|yes|no]</code> to give the names of the people which voted for this keyword.</p>
+
+<p>Your Scenario could look like this (mocked with german texts):</p>
+
+<p><img src="diary/solution.png" alt="Image of our Solution"></p>
+
+<p>To try it, add VotesApp (+4915xxxxx <em>will be listed when the service is ready</em>) to your group and start Voting!</p>
+
+<h1>
+<a id="the-votesapp-diary" class="anchor" href="#the-votesapp-diary" aria-hidden="true"><span class="octicon octicon-link"></span></a>The VotesApp Diary</h1>
+
+<p>This project was triggered because of the <a href="https://github.com/learning-spring-boot/contest">Spring Boot Contest</a>. To keep the judges up to date and show them why we decided like this on some points, we try to keep the diary up to date.</p>
+
+<p>So if you are interested in the huzzle we had, have a look :)</p>
+
+<h2>
+<a id="01012015---make-it-public" class="anchor" href="#01012015---make-it-public" aria-hidden="true"><span class="octicon octicon-link"></span></a>01.01.2015 - Make it public</h2>
+
+<p>Today we decided to put our diary online. Also if there is no code yet, we hope it will be interesting enough :).</p>
+
+<p>Funny background, we just registered the domain for the VotesApp. And this is how we decided who as the pleasure to register it and become the domain owner:</p>
+
+<p><img src="diary/domainOwner.png" alt="Image of our Solution"></p>
+
+<h2>
+<a id="31122014---whats-broken" class="anchor" href="#31122014---whats-broken" aria-hidden="true"><span class="octicon octicon-link"></span></a>31.12.2014 - Whats broken??!?!?!</h2>
+
+<p>Over the night, more and more people commented on the <a href="https://github.com/tgalal/yowsup/issues/370"><em>no_route</em> ticket mentioned</a> yesterday. We saw that <a href="https://github.com/tgalal" class="user-mention">@tgalal</a> was working hard on yowsup but somehow he isn't giving feedback on the registration bug.</p>
+
+<p>When sit together and talking about this, we decided that the broken registration is a show stopper and we need about alternatives.</p>
+
+<p>It seemed that Androids <a href="http://developer.android.com/tools/testing/testing_ui.html#uianalysis">uiautomatorviewer</a> is the way to go. From our past we know that working with the Android Emulator isn't that nice for newbees (specially if you need to reboot the device often). Anyway we saw the Challenge and started installing the Android SDK, booted the Emulator and installed <em>WhatsApp</em> on it.</p>
+
+<p>And hell, yeah! The uiautomatorviewer was able to parse the emulators screen give us needed ui elements content.</p>
+
+<p><img src="diary/UiAutomatorViewer.png" alt="Image of our UiAutomatorViewer"></p>
+
+<p>Okay, the screenshot was black, but the ui structure was visible and showing its texts.</p>
+
+<p>But then the next challenge started, how to remotecontrol (navigate) this "thing" now? Since we have great Selenium skills, we thought of using the selendroid library to do this. But before going to deep into Android development we had the idea to register manual (on the phone) and then continue using yowsup.</p>
+
+<p>Sounds easy, but the <em>simple</em> solutions we found required us to have a rooted android phone. So we tried to root our Android Emulator but it wasn't possible on windows (at least for us). Luckly we found <a href="http://www.digitalinternals.com/security/extract-*WhatsApp*-password-android/374/">this article</a> telling us how to access the emulators disk to download <em>WhatsApp</em>s highly secured passwordfile and read it. :)</p>
+
+<p>That enabled us to send and receive messages over the yowsup-cli.</p>
+
+<p>Okay, that wasn't the full story. We need also to apply this awesome bugfix (we will not share it with the public of course :):
+<img src="diary/awesomeBugfix.png" alt="Image of our s/rase/print/g"></p>
+
+<p>The said story of the day is that the yowsup-cli provides group interaction in the "interactive" mode only. Now the question is how to continue?</p>
+
+<h3>
+<a id="summary" class="anchor" href="#summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary:</h3>
+
+<ul>
+<li>Manual Registration via Emulator with the help of <a href="http://www.digitalinternals.com/security/extract-*WhatsApp*-password-android/374/">this</a> was possible</li>
+<li>We got in touch with yowsup-cli</li>
+<li>Next steps
+
+<ul>
+<li>Plan A: Adjust Yowsup that we can send and receive group messages via the ProcessBuilder</li>
+<li>Plan B: Use Yowsup as a Template for a small Java Library that only implements the 3 to 4 api calls we need (Group Messages, ...)</li>
+</ul>
+</li>
+<li>Out of 6h development, we idled 2h watching the Android Emulator booting :(</li>
+</ul>
+
+<h2>
+<a id="29-30122014---showstopper" class="anchor" href="#29-30122014---showstopper" aria-hidden="true"><span class="octicon octicon-link"></span></a>29-30.12.2014 - Showstopper?</h2>
+
+<p>On thursday the first huzzle started. In the evening I tried to prepare yowsup (the inoffical <em>WhatsApp</em> library written in python) to focus on java when we meet the next time. But already at the installation of the library I got (for a java devs) strange "Tracebacks".</p>
+
+<p>The solution, ... <code>sudo apt-get install python python-dateutil python-argparse python-setuptools</code>
+... was easy, (if you know it :) ), some common dependencies where missing on my pc.</p>
+
+<p>But it was worth it, I think <a href="https://github.com/tgalal/yowsup/issues/464#issuecomment-68265182">our comment</a> lead into this commit:
+<a href="https://github.com/tgalal/yowsup/commit/939af7b9101d6cada50e135710fa6032f67e5921">https://github.com/tgalal/yowsup/commit/939af7b9101d6cada50e135710fa6032f67e5921</a></p>
+
+<p>So our project had the first public benefit :).</p>
+
+<p>But that was not everything.</p>
+
+<p>Once was installed, the first step you need to execute failed because of an <em>no_route</em> error. The disappointing thing was, that we found <a href="https://github.com/tgalal/yowsup/issues/370">a ticket</a> that was filed Nov. 19th and is still not solved.</p>
+
+<p>But who said it should be easy...?</p>
+
+<p>P.S.: My real huzzle was that I'm working on OSX and tried on the same day(s) Docker and Vagrant to get a nice Ubuntu Enviorment to play with :) <em>-cough-</em></p>
+
+<h2>
+<a id="28122014---lets-do-a-mockup-damn-it-how-are-we-gonna-name-this-thing" class="anchor" href="#28122014---lets-do-a-mockup-damn-it-how-are-we-gonna-name-this-thing" aria-hidden="true"><span class="octicon octicon-link"></span></a>28.12.2014 - Let's do a Mockup. Damn, it! How are we gonna name this thing?</h2>
+
+<p>Today we meet the first time to kick-off the project. We roughly talked about the things we can demonstrate with this idea and made a small analyses which API-Calls we need. When we thought we have everything, we start implementing a first mock in Java.</p>
+
+<p>The list of things we could show looks like this:</p>
+
+<p>Our app will (<em>hopfully</em> :) )...,</p>
+
+<ul>
+<li>be a neat and sweat backend service (focus on spring boot, not on UI)</li>
+<li>have a decent business layer (not too much to program)</li>
+<li>talk/integration another services (advantage of Spring)</li>
+<li>be possible to deploy at Cloud-Foundary (or smth. similiar)</li>
+<li>be easy to test for the judges (common requierement)</li>
+<li>solve a real problem (personal requierment)</li>
+</ul>
+
+<p>Our first API draft looks like this:</p>
+
+<p><img src="diary/api1.jpg" alt="Image of our API 1">
+<img src="diary/api2.jpg" alt="Image of our API 2"></p>
+
+<p>*<em>But, *</em> when we start mocking, the first problem hit us, - How are we going to call our baby?</p>
+
+<p>We tought about the goal of the project (finding dates) in combination with the servers we are coupled with, - WhatApp. Since we use <em>doodle</em> to organize our LaserTag events (ya, thats we the nerds will joins and we can use tools like this, ...) we combined 1 and 1. <em>WhatsApp</em> and Doodle is:</p>
+
+<p><strong>-- VotesApp :)</strong></p>
+
+<p>After mocking the java side (where we know our challanges)
+we start searching for the <em>WhatsApp</em> integration.
+Since this is not what the contest is about, we hoped for a java libary
+that has a nice API and is easy to use.</p>
+
+<p>The good news was, we found the <a href="https://github.com/tgalal/yowsup">yowsup</a> api which sounds promising (1,5k stars), the "not so good" news was, it's written in Python and doesn't have an easy to use webservice (by now).</p>
+
+<p>Today we also got <a href="https://github.com/learning-spring-boot/contest/issues/1">the offical</a> "go" to join the contest in a team, - yeye :)</p>
+
+<h3>
+<a id="summary-1" class="anchor" href="#summary-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary:</h3>
+
+<ul>
+<li>We have a clear picture what we like to archive</li>
+<li>We now where to start</li>
+<li>We now there is a <em>WhatsApp</em> Libary that can be used over a cli</li>
+</ul>
+
+<h2>
+<a id="27122014---there-is-a-contest" class="anchor" href="#27122014---there-is-a-contest" aria-hidden="true"><span class="octicon octicon-link"></span></a>27.12.2014 - There is a contest</h2>
+
+<p>Today we saw the contest and immediately kicked-off an e-mail
+brainstorming on our mailing list. We ask our friends who like to join the competition and who has ideas which things currently suck and we could try to do better in a small project like this. Within a few emails the idea of an <em>WhatsApp</em> Group Voting tool was born. Looking to the contest judge characteristics (sweat and neat, popularity, ...) we saw the chance to join the competition.</p>
+
+<h3>
+<a id="our-identified-painpoint" class="anchor" href="#our-identified-painpoint" aria-hidden="true"><span class="octicon octicon-link"></span></a>Our identified Painpoint</h3>
+
+<p>Every week we organize in a <em>WhatsApp</em> group how many people like to join our private soccer event. Thats quite hard because you have to scroll though the history and check who likes to attend.
+This screenshot shows an real example (<em>"Bin dabei"="I'm in", "Ich auch"="Me too"</em>):</p>
+
+<p><img src="diary/painpoint.jpg" alt="Image of our Painpoint"></p>
+
+<h3>
+<a id="the-solution" class="anchor" href="#the-solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Solution:</h3>
+
+<p><em>When we are done</em>,
+you can inviate a Bot into your <em>WhatsApp</em> Group that counts keywords (like "<em>Bin dabei</em>" or "<em>I'm in</em>") and then posts a summary when it gets asked (like <em>Status</em> or <em>Status In</em>).</p>
+
+<p><img src="diary/solution.png" alt="Image of our Solution"></p>
+
+<p>From some local radio stations we know that there are using <em>WhatsApp</em> for TrafficJam reports. So there should be an easy way to get this messages (<strong>we thought...</strong>).</p>
+        </section>
+
+        <footer>
+          VotesApp is maintained by <a href="https://github.com/s2team">s2team</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
