@@ -31,7 +31,13 @@
         <hr>
 
         <section id="main_content">
-          <p>As <em>WhatsApp</em> User the probability that you have a group together with some friends is quite huge. If not try it, it's a great feature. And when you are in a group like, it will happend that someone asks a question like, <em>Who likes to join Karting on Saturday?</em>, or <em>Whats about pizza today after work?</em>. Maybe you have such voting once a week for a fixed event like playing soccer in the evinig? Then it becomes quite hard to manage this.</p>
+          <h1>
+<a id="votesapp-" class="anchor" href="#votesapp-" aria-hidden="true"><span class="octicon octicon-link"></span></a>VotesApp <a href="https://travis-ci.org/s2team/contest"><img src="https://travis-ci.org/s2team/contest.svg?branch=master" alt="Build Status"></a>
+</h1>
+
+<p><strong>VotesApp</strong> is a <em>WhatsApp</em> Bot that helps you and your friends to organize Votes in <em>WhatsApp</em> groups.</p>
+
+<p>As <em>WhatsApp</em> User the probability that you have a group together with some friends is quite huge. If not try it, it's a great feature. And when you are in a group like, it will happend that someone asks a question like, <em>Who likes to join Karting on Saturday?</em>, or <em>Whats about pizza today after work?</em>. Maybe you have such voting once a week for a fixed event like playing soccer in the evinig? Then it becomes quite hard to manage this.</p>
 
 <p>Now you just invite <strong>VotesApp</strong> into your <em>WhatsApp</em> group.
 Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</code>, <code>out</code>, <code>yes</code>, <code>no</code> to count votes and <code>status</code>, <code>status [in|out|yes|no]</code> to give the names of the people which voted for this keyword.</p>
@@ -48,6 +54,21 @@ Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</co
 <p>This project was triggered because of the <a href="https://github.com/learning-spring-boot/contest">Spring Boot Contest</a>. To keep the judges up to date and show them why we decided like this on some points, we try to keep the diary up to date.</p>
 
 <p>So if you are interested in the huzzle we had, have a look :)</p>
+
+<h2>
+<a id="04012015---parallelprogramming--pairprogramming" class="anchor" href="#04012015---parallelprogramming--pairprogramming" aria-hidden="true"><span class="octicon octicon-link"></span></a>04.01.2015 - Parallelprogramming (!= Pairprogramming)</h2>
+
+<p>Two days ago we met again on an epic go cart event and we had some time to discuss the next steps. We figured out that the yowsup architecture seems to be pretty nice (in terms of flexibility and readability). So we decided that we take the risk, drop Plan A (from 31.12.) and implement "only" a nice Rest-API on top off yowsup. With this the actual Java Code, what the contest is about, stays much cleaner.</p>
+
+<p>With this in mind we decided that one of us will put a ReST-Layer in Python and the other one will go for the Java Code.</p>
+
+<p>The result of today are a view java packages:</p>
+
+<p><img src="diary/firstPackages.png" alt="Image of our first packages"></p>
+
+<p>They are far away from production-ready, but they show already the way it will go.</p>
+
+<p>On the python/yowsup side we know how to deal with the native events, we know how to send messages and where to register our own methods. The next step will to dig deeper into how to put the ReST-Layer on-top on it.</p>
 
 <h2>
 <a id="01012015---make-it-public" class="anchor" href="#01012015---make-it-public" aria-hidden="true"><span class="octicon octicon-link"></span></a>01.01.2015 - Make it public</h2>
@@ -146,7 +167,7 @@ Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</co
 
 <p>*<em>But, *</em> when we start mocking, the first problem hit us, - How are we going to call our baby?</p>
 
-<p>We tought about the goal of the project (finding dates) in combination with the servers we are coupled with, - WhatApp. Since we use <em>doodle</em> to organize our LaserTag events (ya, thats we the nerds will joins and we can use tools like this, ...) we combined 1 and 1. <em>WhatsApp</em> and Doodle is:</p>
+<p>We tought about the goal of the project (finding dates) in combination with the servers we are coupled with, - WhatApp. Since we use <em>doodle</em> to organize our LaserTag events (ya, thats we the nerds will joins and we can use tools like this, ...) we combined 1 and 1. <em>WhatsApp</em> and Doodle is: Whoodle. Later we recongnized the Whoodle is a dog breed so we renamed it to:</p>
 
 <p><strong>-- VotesApp :)</strong></p>
 
