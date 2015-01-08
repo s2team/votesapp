@@ -56,6 +56,29 @@ Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</co
 <p>So if you are interested in the huzzle we had, have a look :)</p>
 
 <h2>
+<a id="07012015---hello-reactor-can-we-vote" class="anchor" href="#07012015---hello-reactor-can-we-vote" aria-hidden="true"><span class="octicon octicon-link"></span></a>07.01.2015 - Hello Reactor? Can we vote?</h2>
+
+<p>As usual there is a good news and a bad news. Let's start with the bad one, because we learned that the last thing you, tell stays in our minds :)</p>
+
+<p>Bad News: We still have some huzzle with the Python Backend. But we think we can finish it by tomorrow and then fully concentrate on the contest`s goal (Java/Spring Boot)!</p>
+
+<p>Good News: To avoid having nothing by now, we added a simple <a href="src/main/java/de/votesapp/client/ConsoleClient.java">"ConsoleClient"</a> to fake the WhatsApp Service. That gets loaded when the "yowsup" Profile isn't active. For this we utilized the <code>!</code> operator within the <code>@Profile</code>-Annotation.</p>
+
+<p><img src="diary/notInProfile.png" alt="Image of Not in Profiles"></p>
+
+<p>With this we can have our first vote, which proofs that some logic is already working:</p>
+
+<p><img src="diary/succedInTheContest.png" alt="Image of our first vote"></p>
+
+<p>To do so, we decided to remove the interfaces we had previously between our API and WhatsApp and use <a href="https://github.com/reactor/reactor">reactor</a> instead.</p>
+
+<p>The <a href="src/main/java/de/votesapp/api/WhatsAppClientToReactorBridge.java">"Bridge"</a> between our <a href="src/main/java/de/votesapp/client/ConsoleClient.java">"ConsoleClient"</a> and Reactor looks like this:</p>
+
+<p><img src="diary/reactorExample.png" alt="Reactor Example"></p>
+
+<p>We are looking forward to do more stuff on the Java site within the next days.</p>
+
+<h2>
 <a id="04012015---parallelprogramming--pairprogramming" class="anchor" href="#04012015---parallelprogramming--pairprogramming" aria-hidden="true"><span class="octicon octicon-link"></span></a>04.01.2015 - Parallelprogramming (!= Pairprogramming)</h2>
 
 <p>Two days ago we met again on an epic go cart event and we had some time to discuss the next steps. We figured out that the yowsup architecture seems to be pretty nice (in terms of flexibility and readability). So we decided that we take the risk, drop Plan A (from 31.12.) and implement "only" a nice Rest-API on top off yowsup. With this the actual Java Code, what the contest is about, stays much cleaner.</p>
