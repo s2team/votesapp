@@ -32,7 +32,27 @@
 
         <section id="main_content">
           <h1>
-<a id="votesapp-" class="anchor" href="#votesapp-" aria-hidden="true"><span class="octicon octicon-link"></span></a>VotesApp <a href="https://travis-ci.org/s2team/contest"><img src="https://travis-ci.org/s2team/contest.svg?branch=master" alt="Build Status"></a>
+<a id="on-air-until-17012015----ote-for-s2" class="anchor" href="#on-air-until-17012015----ote-for-s2" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<img src="diary/onair.png" alt="Image of our Solution">[ON AIR] until 17.01.2015 -  √ote for S2</h1>
+
+<p>The project is started for the <a href="https://github.com/learning-spring-boot/contest">Spring Boot Contest</a>. To support us please</p>
+
+<ul>
+<li>"Star" the Repository and/or</li>
+<li>Tweet about it using the #VotesApp HashTag</li>
+</ul>
+
+<p>It is submitted by <a href="https://github.com/d0x">@d0x (Christian Schneider)</a> and <a href="https://github.com/walery">@walery (Walery Strauch)</a>. If you have any ideas or feedback, contact us on Twitter or open a ticket on github.</p>
+
+<p>During the contest we write a small <a href="https://github.com/s2team/contest#the-votesapp-diary">diary</a> and maintain a <a href="https://trello.com/b/VzijoLhr/votesapp">trello board for this project</a>.
+If you are really interested in recent updates, you <em>could</em> add this <code>crontab</code> :)</p>
+
+<div class="highlight highlight-bash"><pre>crontab -l <span class="pl-k">|</span> { cat<span class="pl-k">;</span> <span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">"</span>0 13 * * * firefox https://github.com/s2team/contest#the-votesapp-diary<span class="pl-pds">"</span></span><span class="pl-k">;</span> } <span class="pl-k">|</span> crontab -</pre></div>
+
+<p>Thank you for any kind of support! - S2.</p>
+
+<h1>
+<a id="about-votesapp-" class="anchor" href="#about-votesapp-" aria-hidden="true"><span class="octicon octicon-link"></span></a>About VotesApp <a href="https://travis-ci.org/s2team/contest"><img src="https://travis-ci.org/s2team/contest.svg?branch=master" alt="Build Status"></a>
 </h1>
 
 <p><strong>VotesApp</strong> is a <em>WhatsApp</em> Bot that helps you and your friends to organize Votes in <em>WhatsApp</em> groups.</p>
@@ -54,6 +74,63 @@ Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</co
 <p>This project was triggered because of the <a href="https://github.com/learning-spring-boot/contest">Spring Boot Contest</a>. To keep the judges up to date and show them why we decided like this on some points, we try to keep the diary up to date.</p>
 
 <p>So if you are interested in the huzzle we had, have a look :)</p>
+
+<h2>
+<a id="08012015---ping-pong---feature-request-" class="anchor" href="#08012015---ping-pong---feature-request-" aria-hidden="true"><span class="octicon octicon-link"></span></a>08.01.2015 - Ping? Pong! - Feature Request :)</h2>
+
+<p>Today evening we meet again and summarized the current status.</p>
+
+<p>On the Python we still need to tune some things before releasing it to public. But I can tell you, there is already some nice communication going on.</p>
+
+<p>On the Java we can show already some new things. Since we are using Reactor we also like to use it for our integration tests. The idea is to "replay" incomming WhatsApp Messages and then check the result. In a simple scenario we would like to test that when sending "ping", "pong" should be returned.</p>
+
+<div class="highlight highlight-java"><pre>@RunWith(<span class="pl-stj">SpringJUnit4ClassRunner</span><span class="pl-k">.</span>class)
+@SpringApplicationConfiguration(classes <span class="pl-k">=</span> <span class="pl-stj">VotesAppApplication</span><span class="pl-k">.</span>class)
+@<span class="pl-stj">WebAppConfiguration</span>
+<span class="pl-s">public</span> <span class="pl-s">class</span> <span class="pl-en">VotesAppApplicationTest</span> {
+
+  <span class="pl-st">@Autowired</span>
+  <span class="pl-stj">Reactor</span> reactor;
+
+  <span class="pl-st">@Test</span>
+  <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">ping_pong_test</span>() <span class="pl-s">throws</span> <span class="pl-stj">InterruptedException</span> {
+    reactor<span class="pl-k">.</span>notify(<span class="pl-s1"><span class="pl-pds">"</span>group.inbox<span class="pl-pds">"</span></span>, <span class="pl-stj">Event</span><span class="pl-k">.</span>wrap(<span class="pl-s1"><span class="pl-pds">"</span>Ping<span class="pl-pds">"</span></span>));
+
+    <span class="pl-c">// If the integration works well, the business logic should answer with "Pong" to "group.outbox"</span>
+
+    <span class="pl-c">// does not exist like this (yet :( )</span>
+    assertThat(reactor, receives(<span class="pl-s1"><span class="pl-pds">"</span>Pong<span class="pl-pds">"</span></span>)<span class="pl-k">.</span>in(<span class="pl-s1"><span class="pl-pds">"</span>group.outbox<span class="pl-pds">"</span></span>));
+  }
+}</pre></div>
+
+<p>When doing so we haven't found an <em>elegant</em> way to <code>assertThat</code> a <code>GroupMessage</code>-Event was raised.
+The cool thing is that the authors <a href="https://github.com/smaldini" class="user-mention">@smaldini</a> and <a href="https://github.com/jbrisbin" class="user-mention">@jbrisbin</a> <a href="https://github.com/reactor/reactor/issues/415#issuecomment-69263171">liked the Idea</a> and we will maybe see it in some time.
+Until then we are doing it with some <code>obj.notify()</code> and <code>obj.wait()</code> magic in our <a href="src/test/java/de/votesapp/VotesAppUserTests_Test.java">integration test</a></p>
+
+<p>Another neat experience we had was the integration of an embedded mongodb for our integration tests.</p>
+
+<p>The only change we need made was adding this dependency <code>com.github.fakemongo:fongo:1.5.9</code> and putting the following configuration for our tests:</p>
+
+<div class="highlight highlight-java"><pre>@<span class="pl-stj">Configuration</span>
+<span class="pl-s">static</span> <span class="pl-s">class</span> <span class="pl-en">MongoDbTestConfiguration</span> <span class="pl-s">extends</span> <span class="pl-e">AbstractMongoConfiguration</span> {
+
+  <span class="pl-st">@Override</span>
+  <span class="pl-s">protected</span> <span class="pl-stj">String</span> <span class="pl-en">getDatabaseName</span>() {
+    <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-pds">"</span>test<span class="pl-pds">"</span></span>;
+  }
+
+  <span class="pl-st">@Override</span>
+  <span class="pl-s">public</span> <span class="pl-stj">Mongo</span> <span class="pl-en">mongo</span>() {
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-stj">Fongo</span>(<span class="pl-s1"><span class="pl-pds">"</span>mongo<span class="pl-pds">"</span></span>)<span class="pl-k">.</span>getMongo();
+  }
+
+  <span class="pl-st">@Override</span>
+  <span class="pl-s">protected</span> <span class="pl-stj">String</span> <span class="pl-en">getMappingBasePackage</span>() {
+    <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-pds">"</span>de.votesapp<span class="pl-pds">"</span></span>;
+  }
+}</pre></div>
+
+<p>Because we currently don't need a real database, we decided to put it into the main configuration as long as we haven't finished the database integration and deployed it to p.</p>
 
 <h2>
 <a id="07012015---hello-reactor-can-we-vote" class="anchor" href="#07012015---hello-reactor-can-we-vote" aria-hidden="true"><span class="octicon octicon-link"></span></a>07.01.2015 - Hello Reactor? Can we vote?</h2>
