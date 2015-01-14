@@ -23,9 +23,9 @@
         </header>
 
         <section id="downloads" class="clearfix">
-          <a href="https://github.com/s2team/contest/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/s2team/contest/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/s2team/contest" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          <a href="https://github.com/s2team/votesapp/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/s2team/votesapp/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/s2team/votesapp" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
 
         <hr>
@@ -33,7 +33,7 @@
         <section id="main_content">
           <h1>
 <a id="on-air-until-17012015----ote-for-s2" class="anchor" href="#on-air-until-17012015----ote-for-s2" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-<img src="diary/onair.png" alt="Image of our Solution">[ON AIR] until 17.01.2015 -  √ote for S2</h1>
+<img src="diary/onair.png" alt="Image of our Solution">[ON AIR] until 17.01.2015 -  √ote for s2</h1>
 
 <p>The project is started for the <a href="https://github.com/learning-spring-boot/contest">Spring Boot Contest</a>. To support us please</p>
 
@@ -49,7 +49,7 @@ If you are really interested in recent updates, you <em>could</em> add this <cod
 
 <div class="highlight highlight-bash"><pre>crontab -l <span class="pl-k">|</span> { cat<span class="pl-k">;</span> <span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">"</span>0 13 * * * firefox https://github.com/s2team/contest#the-votesapp-diary<span class="pl-pds">"</span></span><span class="pl-k">;</span> } <span class="pl-k">|</span> crontab -</pre></div>
 
-<p>Thank you for any kind of support! - S2.</p>
+<p>Thank you for any kind of support! - s2.</p>
 
 <h1>
 <a id="about-votesapp-" class="anchor" href="#about-votesapp-" aria-hidden="true"><span class="octicon octicon-link"></span></a>About VotesApp <a href="https://travis-ci.org/s2team/contest"><img src="https://travis-ci.org/s2team/contest.svg?branch=master" alt="Build Status"></a>
@@ -60,13 +60,7 @@ If you are really interested in recent updates, you <em>could</em> add this <cod
 <p>As <em>WhatsApp</em> User the probability that you have a group together with some friends is quite huge. If not try it, it's a great feature. And when you are in a group like, it will happend that someone asks a question like, <em>Who likes to join Karting on Saturday?</em>, or <em>Whats about pizza today after work?</em>. Maybe you have such voting once a week for a fixed event like playing soccer in the evinig? Then it becomes quite hard to manage this.</p>
 
 <p>Now you just invite <strong>VotesApp</strong> into your <em>WhatsApp</em> group.
-Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</code>, <code>out</code>, <code>yes</code>, <code>no</code> to count votes and <code>status</code>, <code>status [in|out|yes|no]</code> to give the names of the people which voted for this keyword.</p>
-
-<p>Your Scenario could look like this (mocked with german texts):</p>
-
-<p><img src="diary/solution.png" alt="Image of our Solution"></p>
-
-<p>To try it, add VotesApp (+4915xxxxx <em>will be listed when the service is ready</em>) to your group and start Voting!</p>
+Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</code>, <code>out</code>, <code>yes</code>, <code>no</code> to count votes and <code>status</code> to give the names of the people which voted for this keyword.</p>
 
 <h1>
 <a id="the-votesapp-diary" class="anchor" href="#the-votesapp-diary" aria-hidden="true"><span class="octicon octicon-link"></span></a>The VotesApp Diary</h1>
@@ -74,6 +68,67 @@ Once joined, <strong>VotesApp</strong> will listen to the Keywords, <code>in</co
 <p>This project was triggered because of the <a href="https://github.com/learning-spring-boot/contest">Spring Boot Contest</a>. To keep the judges up to date and show them why we decided like this on some points, we try to keep the diary up to date.</p>
 
 <p>So if you are interested in the huzzle we had, have a look :)</p>
+
+<h2>
+<a id="13012014---its-deployed" class="anchor" href="#13012014---its-deployed" aria-hidden="true"><span class="octicon octicon-link"></span></a>13.01.2014 - It's deployed!</h2>
+
+<p>Since today it's the full stack is deployed.</p>
+
+<p>Now your can invite our Test-Number ( <strong>+49 1577 0658227</strong> ) into your groups to start some votes.</p>
+
+<p>Basics votes (and some eastereggs) are supported, see:</p>
+
+<p><img src="diary/firstTest_small.png" alt="Image of our Solution"></p>
+
+<p>Currently you can use the following (essential) instructions:</p>
+
+<ul>
+<li>Help</li>
+<li>Yes, No, In, Out, Maybe, +1, 2, 3,4 ..., 0</li>
+<li>Reset, Vote</li>
+<li>.+? (to set a question)</li>
+<li>Status</li>
+</ul>
+
+<p>Or this (nice to have) stuff:</p>
+
+<ul>
+<li>Roll, Dice</li>
+<li>Chuck Norris</li>
+</ul>
+
+<h3>
+<a id="why-it-took-so-long" class="anchor" href="#why-it-took-so-long" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why it took so long?</h3>
+
+<p>Within the last three days we had strange encoding problems within our deployed python application.
+It wasn't really clear whether where the problem is comes from.
+We had serval differences (OS, Python-Version, Virtualisation) between our development machine and the server.
+The final solution was quite easy, we just need to set the <code>locale</code> correct.
+The identification wasn't obvious because the application was running in an docker container and you need to find the right command to execute <code>locale</code>  in our enviorment it's: <code>docker exec -i -t yourName bash</code>.</p>
+
+<p>I think we describe the full stack more detailed in the next days.
+We wil also try to make a plugin API (using Spring-Plugin) to support 3rd Party commands :)</p>
+
+<p>Happy testing!</p>
+
+<h2>
+<a id="10012015---python-brings-us-back-to-the-basics" class="anchor" href="#10012015---python-brings-us-back-to-the-basics" aria-hidden="true"><span class="octicon octicon-link"></span></a>10.01.2015 - Python brings us back to the basics</h2>
+
+<p><strong>Yes!</strong> We made Yowsup ready to use from our java backend. Here is a screenshot of the communication we did today:</p>
+
+<p><img src="diary/yowsupFiler.png" alt="Image of our first messages"></p>
+
+<p>We are not quite proud that we need to use FileIO to send and receive messages, but thats the limitation we have by yowsup and our python skills.</p>
+
+<p>In the last days we were learning some Python and understanding the Yowsup architecture (which is really great!). We tried to add a ReST Server to yowsup. Finally we regonized that the communication between WhatsApp and Yowsup stopped working when spinning up the <a href="http://bottlepy.org/">Bottle Rest Server</a>.</p>
+
+<p>Because we don't have more time to get more deep into python, we decided to use JSON-Files to instead of an REST server for now. The result should look like this:</p>
+
+<p><img src="diary/fileSolution.jpeg" alt="Image of our file Solution"></p>
+
+<p>The goal is to keep the VotesApp solution (which we submit) on clean. It will not have anything todo with the file io that happens on the right side (because yowsup doesn't have the rest interface yet). If you are intereseted in the python code we added you can find it in <a href="https://github.com/s2team/yowsup/commit/2b24d3fa4ea1b7f821924a48b7ef60084519553e">this</a> commit. But don't take it as an best practice example :).</p>
+
+<p>Now we "only" need to build the middle application what will be not that hard.</p>
 
 <h2>
 <a id="08012015---ping-pong---feature-request-" class="anchor" href="#08012015---ping-pong---feature-request-" aria-hidden="true"><span class="octicon octicon-link"></span></a>08.01.2015 - Ping? Pong! - Feature Request :)</h2>
