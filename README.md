@@ -18,10 +18,10 @@ Thank you for any kind of support! - s2.
 # About VotesApp [![Build Status](https://travis-ci.org/s2team/contest.svg?branch=master)](https://travis-ci.org/s2team/contest)
 **VotesApp** is a *WhatsApp* Bot that helps you and your friends to organize Votes in *WhatsApp* groups.
 
-As *WhatsApp* User the probability that you have a group together with some friends is quite huge. If not try it, it's a great feature. And when you are in a group like, it will happend that someone asks a question like, *Who likes to join Karting on Saturday?*, or *Whats about pizza today after work?*. Maybe you have such voting once a week for a fixed event like playing soccer in the evinig? Then it becomes quite hard to manage this.
+As *WhatsApp* User the probability that you have a group together with some friends is quite huge. If not try it, it's a great feature. When you are in a group, group decision questions requiring votes from group members keep poping up, like, *Who likes to join Karting on Saturday?*, or *What about pizza today after work?*. Maybe you have such voting once a week for a fixed event like playing soccer in the evening? Then it becomes quite hard to manage this.
 
 Now you just invite **VotesApp** into your *WhatsApp* group.
-Once joined, **VotesApp** will listen to the Keywords, `in`, `out`, `yes`, `no` to count votes and `status` to give the names of the people which voted for this keyword.
+Once joined, **VotesApp** will listen to the Keywords, `in`, `out`, `yes`, `no` to count votes and `status` to give the names of the people who voted for this keyword.
 
 # The VotesApp Diary
 This project was triggered because of the [Spring Boot Contest](https://github.com/learning-spring-boot/contest). To keep the judges up to date and show them why we decided like this on some points, we try to keep the diary up to date.
