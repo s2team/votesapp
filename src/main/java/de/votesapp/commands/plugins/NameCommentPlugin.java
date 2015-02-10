@@ -12,7 +12,7 @@ import de.votesapp.groups.Group;
 
 public class NameCommentPlugin implements CommandPlugin
 {
-    private Pattern pattern = Pattern.compile("^comment \\w+$");
+    private Pattern pattern = Pattern.compile("^comment \\w+$",Pattern.CASE_INSENSITIVE);
 
     @Override public Optional<Answer> interpret(GroupMessage message, Group group)
     {
